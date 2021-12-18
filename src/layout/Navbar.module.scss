@@ -1,0 +1,52 @@
+.navbar {
+  max-width: 1300px;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__mode {
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    background: rgb(73, 73, 73);
+    cursor: pointer;
+    position: relative;
+
+    &__btn {
+      height: 90%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 5px;
+      width: 30px;
+      border-radius: 20px;
+      transition: 0.3s;
+      background: #efefef;
+
+      &--active {
+        background: #ffc800;
+        transform: translate(30px, -50%);
+      }
+    }
+  }
+
+  &__weather{
+    text-align: center;
+    span{
+      font-size: 30px;
+    }
+    p{
+      margin: 0px 0px 10px 0px;
+      border-bottom: 1px solid white;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 960px) {
+    padding: 0px 20px;
+  }
+}

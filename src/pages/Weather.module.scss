@@ -1,0 +1,33 @@
+.container {
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+  max-width: 1200px;
+
+  &__title {
+    font-size: 60px;
+  }
+
+  &__details {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+
+    &__cover {
+      width: 150px;
+      padding: 20px;
+      border-radius: 20px;
+      background: #d7d7d7;
+      transition: 0.3s;
+
+      &--active {
+        background: rgb(59, 59, 59);
+      }
+
+      span{
+          display: block;
+          font-size: 20px;
+      }
+    }
+  }
+}
