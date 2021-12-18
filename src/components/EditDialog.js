@@ -17,8 +17,8 @@ export default function FormDialog(props) {
   };
 
   const editTask = (task) => {
-    task.title = title;
-    task.desc = desc;
+    task.title = title || task.title;
+    task.desc = desc || task.desc;
     tasksCtx.editHandler(task);
     closeHandler();
   };

@@ -50,7 +50,7 @@ const HideAppBar = (props) => {
           <Toolbar className={style.navbar}>
             <Typography variant="h6" component="div">
               <Link to="/">
-                <span class="white-text">React To-Do Task</span>
+                <span className="white-text">React To-Do Task</span>
               </Link>
             </Typography>
             <div className={style.navbar__weather}>

@@ -8,20 +8,20 @@ import TasksContext from "../store/task-context";
 
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
+import DatePickerField from "@mui/lab/DatePicker";
 
 export default function FormDialog(props) {
   const tasksCtx = useContext(TasksContext);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [date, setDate] = useState(null);
+  const [picker, setDatePicker] = useState(null);
 
-  const isBtnDisable = !title || !desc || !date
+  const isBtnDisable = !title || !desc || !picker;
 
   const closeHandler = () => {
-    setTitle('')
-    setDesc('')
-    setDate(null)
+    setTitle("");
+    setDesc("");
+    setDatePicker(null);
     props.closeHandler();
   };
 
@@ -34,11 +34,11 @@ export default function FormDialog(props) {
   };
 
   const createHandler = () => {
-    let day = date.getDate()
-    let month = date.getMonth() + 1
-    let year = date.getFullYear()
-    let customDate = day + '/' + month + '/' + year
-    
+    let day = picker.getDate();
+    let month = picker.getMonth() + 1;
+    let year = picker.getFullYear();
+    let customDate = day + "/" + month + "/" + year;
+
     let newTask = {
       id: Math.random(),
       title,
@@ -51,8 +51,6 @@ export default function FormDialog(props) {
     tasksCtx.createHandler(newTask);
     closeHandler();
   };
-
-
 
   return (
     <div>
@@ -79,14 +77,14 @@ export default function FormDialog(props) {
         </DialogContent>
         <div className="datepicker-width">
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
+            <DatePickerField
               className="datepicker-width"
               label="Create Date"
               openTo="year"
               views={["year", "month", "day"]}
-              value={date}
-              onChange={(newDate) => {
-                setDate(newDate);
+              value={picker}
+              onChange={(dte) => {
+                setDatePicker(dte);
               }}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -94,7 +92,14 @@ export default function FormDialog(props) {
         </div>
         <DialogActions>
           <Button onClick={closeHandler}>Cancel</Button>
-          <Button disabled={isBtnDisable} onClick={createHandler} variant="contained" color="secondary">Create</Button>
+          <Button
+            disabled={isBtnDisable}
+            onClick={createHandler}
+            variant="contained"
+            color="secondary"
+          >
+            Create
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
